@@ -1,3 +1,4 @@
+<!-- 定向帮扶列表 -->
 <template>
   <div class="child-list">
     <ul class="list">

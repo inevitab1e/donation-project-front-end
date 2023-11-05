@@ -1,3 +1,5 @@
+<!-- 主页帮扶项目展示列表 -->
+
 <template>
   <div class="home-list">
     <div class="home-list-header">

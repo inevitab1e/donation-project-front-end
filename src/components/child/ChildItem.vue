@@ -1,3 +1,4 @@
+<!-- 定向帮扶展示框 -->
 <template>
   <li class="child-list-item">
     <div class="card-container">
@@ -18,15 +19,20 @@
           <div class="card-text">
             <h3>
               <a href="https://www.baidu.com/" target="_blank" class="titless"
-                >test project 01</a
+                >test child title 01</a
               >
             </h3>
             <p>
               <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
+                >捐助对象 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">text</span>
             </p>
             <p>
+              <span class="pro_sp2"
+                >项目简介 <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">text</span>
+            </p>
+            <!-- <p>
               <span class="pro_sp2"
                 >项目简介 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">text</span>
@@ -35,12 +41,7 @@
               <span class="pro_sp2"
                 >项目简介 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">text</span>
-            </p>
-            <p>
-              <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
-            </p>
+            </p> -->
           </div>
         </el-col>
         <el-col :span="6">
@@ -61,7 +62,7 @@
             <p>
               <el-progress :percentage="50"></el-progress>
             </p>
-            <br>
+            <br />
             <el-button type="primary" size="mini" class="donation-btn"
               >我要捐款</el-button
             >

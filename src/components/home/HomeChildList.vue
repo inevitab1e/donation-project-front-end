@@ -1,3 +1,4 @@
+<!-- 主页定向帮扶展示列表 -->
 <template>
   <div class="home-list">
     <div class="home-list-header">

@@ -1,3 +1,4 @@
+<!-- 帮扶项目列表页面 -->
 <template>
   <div class="donation_project_container">
     <ProjectList></ProjectList>

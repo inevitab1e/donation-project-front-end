@@ -1,3 +1,4 @@
+<!-- 个人信息展示 -->
 <template>
   <el-col :span="18">
     <div class="grid-content">

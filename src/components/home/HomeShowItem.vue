@@ -1,44 +1,8 @@
-<!-- <template>
-  <li class="brief-list-item">
-    <a href=""><img src="" title="" alt="" class="" /></a>
-    <h3 class="main_h3">
-      <a href="" title="">慈善募捐 | 一针一线公益项目</a>
-    </h3>
-    <div class="donate_infor clearfix">
-      <p class="donate_content">
-        已筹：<span class="m_num">2632617</span>元 <br />捐款人次:
-        <span>55371</span>
-      </p>
-      <a>我要捐款</a>
-    </div>
-  </li>
-</template>
-
-<script>
-export default {};
-</script>
-
-<style scoped>
-.brief-list-item {
-  
-  width: 225px;
-  height: 225px;
-  border: 1px solid #dfdcdc;
-  float: left;
-  margin-left: 17px;
-}
-li {
-  list-style: none;
-}
-</style> -->
-
+<!-- 主页展示框组件 -->
 <template>
   <li class="brief-list-item">
     <el-card :body-style="{ padding: '0px' }" shadow="never">
-      <img
-        src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-        class="image"
-      />
+      <img src="../../assets/logo.png" class="image" />
       <div style="padding: 10px">
         <h3 class="main_h3">
           <a href="" class="project-title" title="">一针一线公益项目</a>
@@ -52,14 +16,14 @@ li {
             type="primary"
             size="mini"
             class="button"
-            :click="showLoginForm()"
+            @click="checkLoginState"
             >我要捐款</el-button
           >
-          <LoginForm v-if="showForm"></LoginForm>
           <!-- <a>我要捐款</a> -->
         </div>
       </div>
     </el-card>
+    <!-- <LoginForm :isShowForm.sync="isShowForm"></LoginForm> -->
   </li>
 </template>
 
@@ -67,14 +31,16 @@ li {
 export default {
   data() {
     return {
-      showForm: false,
+      flag: false
     };
   },
   methods: {
-    showLoginForm() {
-      this.showForm = true;
-      console.log(this.showForm);
-    },
+    checkLoginState() {
+      if (!this.flag){
+        this.$router.push('/login')
+      }
+      console.log(this.flag)
+    }
   },
 };
 </script>

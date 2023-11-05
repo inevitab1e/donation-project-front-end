@@ -1,3 +1,4 @@
+<!-- 注册界面 -->
 <template>
   <div class="register-container">
     <el-card class="sign-in-card">

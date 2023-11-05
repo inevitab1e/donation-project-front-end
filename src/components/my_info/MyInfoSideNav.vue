@@ -1,3 +1,4 @@
+<!-- 个人信息侧导航 -->
 <template>
   <el-col :span="6">
     <div class="grid-content bg-purple">
