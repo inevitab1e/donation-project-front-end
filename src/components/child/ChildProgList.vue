@@ -6,6 +6,7 @@
         <ChildProgItem></ChildProgItem>
         <ChildProgItem></ChildProgItem>
         <ChildProgItem></ChildProgItem>
+        <!-- <ChildProgItem v-for="item in childProgItemList" :key="item.id" :item="item"></ChildProgItem> -->
       </ul>
       <br />
       <!-- 之后要写js -->

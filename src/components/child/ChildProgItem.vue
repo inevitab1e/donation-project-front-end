@@ -26,6 +26,9 @@
     <script>
   export default {
     mounted: {},
+    // props:{
+    //   item: Object
+    // }
   };
   </script>
     

@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <!-- 图片 -->
-          <a href="https://www.baidu.com/" target="_blank">
+          <a >
             <img
               class="image"
               src="../../assets/logo.png"
@@ -18,39 +18,35 @@
           <!-- 文本说明 -->
           <div class="card-text">
             <h3>
-              <a href="https://www.baidu.com/" target="_blank" class="titless"
+              <a class="titless" style="font-size: large;"
                 >test child title 01</a
               >
             </h3>
             <p>
               <span class="pro_sp2"
-                >捐助对象 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
+                >捐助儿童 <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">name</span>
+            </p>
+            <p>
+              <span class="pro_sp2"
+                >&nbsp;&nbsp;&nbsp;年龄&nbsp;&nbsp;&nbsp; <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">age</span>
             </p>
             <p>
               <span class="pro_sp2"
                 >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
-            </p>
-            <!-- <p>
-              <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
+              ><span class="info">description</span>
             </p>
             <p>
               <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
-            </p> -->
+                >计划金额 <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">money</span><b>元</b>
+            </p>
           </div>
         </el-col>
         <el-col :span="6">
           <!-- 文本说明 -->
           <div class="card-text">
-            <p>
-              <span class="pro_sp2">项目状态：</span>
-              <span class="info">text</span>
-            </p>
             <p>
               <span class="pro_sp2">已筹：</span>
               <span class="info">666</span><b>元</b>

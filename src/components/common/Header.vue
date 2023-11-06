@@ -5,31 +5,40 @@
       <img class="project-icon" src="../../assets/logo.png" />
     </div>
     <div class="login-link-container">
-      <a v-if="isLogin" class="welcome-words">您好，欢迎来到光明筑梦贫困儿童帮扶平台</a>
+      <a v-if="this.loginState" class="welcome-words"
+        >您好，欢迎来到光明筑梦贫困儿童帮扶平台</a
+      >
       <el-link v-else @click="jumpToLogin">登录</el-link>
       <el-divider direction="vertical"></el-divider>
-      <el-link v-if="isLogin">退出</el-link>
+      <el-link v-if="this.loginState">退出</el-link>
       <el-link v-else @click="jumpToSignIn">注册</el-link>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "AppHeader",
   data() {
     return {
-      isLogin: true,
+      
     };
   },
-  methods:{
-    jumpToLogin () {
-        this.$router.push('/login');
+  methods: {
+    jumpToLogin() {
+      this.$router.push("/login");
     },
-    jumpToSignIn () {
-        this.$router.push('/sign_in');
+    jumpToSignIn() {
+      this.$router.push("/sign_in");
     },
-  }
+  },
+  computed: {
+    ...mapState("user", ["loginState"]),
+  },
+  created() {
+    this.isLogin = !!this.userInfo;
+  },
 };
 </script>
 
@@ -50,7 +59,7 @@ export default {
   margin-right: 10px;
   float: right;
 }
-.welcome-words{
-    font-size: 10px;
+.welcome-words {
+  font-size: 10px;
 }
 </style>

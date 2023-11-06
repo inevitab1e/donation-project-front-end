@@ -11,6 +11,7 @@
         <HomeShowItem></HomeShowItem>
         <HomeShowItem></HomeShowItem>
         <HomeShowItem></HomeShowItem>
+        <!-- <HomeShowItem v-for="item in itemList" :key="item.id" :item="item"></HomeShowItem> -->
       </ul>
     </div>
   </div>

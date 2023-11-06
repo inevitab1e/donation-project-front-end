@@ -6,6 +6,7 @@
       <ProjectItem></ProjectItem>
       <ProjectItem></ProjectItem>
       <ProjectItem></ProjectItem>
+      <!-- <ProjectItem v-for="(project) in projectList" :key="project.id" :project="project"></ProjectItem> -->
     </ul>
     <br>
     <!-- 之后要写js -->

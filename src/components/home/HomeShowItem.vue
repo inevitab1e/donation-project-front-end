@@ -5,12 +5,13 @@
       <img src="../../assets/logo.png" class="image" />
       <div style="padding: 10px">
         <h3 class="main_h3">
-          <a href="" class="project-title" title="">一针一线公益项目</a>
+          <a style="font-size: large">一针一线公益项目</a>
         </h3>
         <div class="donate_infor clearfix">
           <p class="donate_content">
-            已筹：<span class="m_num">2632617</span>元 <br />捐款人次:
-            <span>55371</span>
+            已筹：<span class="m_num" style="color: black">2632617</span>元
+            <br />捐款人次:
+            <span style="color: black">55371</span>
           </p>
           <el-button
             type="primary"
@@ -23,24 +24,34 @@
         </div>
       </div>
     </el-card>
-    <!-- <LoginForm :isShowForm.sync="isShowForm"></LoginForm> -->
   </li>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 export default {
   data() {
-    return {
-      flag: false
-    };
+    return {};
   },
+  // props: {
+  //   item: Object,
+  // },
   methods: {
     checkLoginState() {
-      if (!this.flag){
-        this.$router.push('/login')
+      if (!this.loginState) {
+        this.$router.push("/login");
       }
-      console.log(this.flag)
-    }
+      //写跳转到详情的逻辑
+      console.log(this.loginState);
+      // this.updateCurrentPorject(this.item);
+      console.log(this.currentProject)
+      // this.$router.push("/project_detail");
+    },
+  },
+  computed: {
+    ...mapState("user", ["loginState"]),
+    ...mapState("project", ["currentProject"]),
+    ...mapMutations("project", ["updateCurrentProject"]),
   },
 };
 </script>

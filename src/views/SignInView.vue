@@ -4,9 +4,6 @@
     <el-card class="sign-in-card">
       <h2>注册</h2>
       <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username"></el-input>
-        </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model="form.password"></el-input>
         </el-form-item>
@@ -23,6 +20,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     var validateConfirm = (rule, value, callback) => {
@@ -36,20 +34,10 @@ export default {
     };
     return {
       form: {
-        username: "",
         password: "",
         confirm: "",
       },
       rules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          {
-            min: 3,
-            max: 15,
-            message: "长度在 3 到 15 个字符",
-            trigger: "blur",
-          },
-        ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
           {
@@ -67,13 +55,26 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert("注册成功");
-          // TODO: 发送注册信息到后端
-        } else {
-          console.log("error submit!!");
-          return false;
+      this.$refs[formName].validate(async (valid) => {
+        try {
+          if (valid) {
+            // TODO: 发送注册信息到后端 api没写
+            const res = await axios.post("", {
+              username: this.form.username,
+              password: this.form.password,
+            });
+            if (res.data.code === 200) {
+              alert("注册成功");
+              this.$router.push("/login");
+            } else {
+              alert("注册失败");
+            }
+          } else {
+            console.log("error submit!!");
+            return false;
+          }
+        } catch (err) {
+          console.log(err);
         }
       });
     },
@@ -97,5 +98,4 @@ export default {
   padding: 20px;
   text-align: center;
 }
-
 </style>

@@ -13,18 +13,19 @@
       <el-menu-item index="/home">首页</el-menu-item>
       <el-menu-item index="/donation_project">帮扶项目</el-menu-item>
       <el-menu-item index="/donation_child">定向帮扶</el-menu-item>
-      <el-menu-item index="/my_info" v-if="isLogin">个人中心</el-menu-item>
+      <el-menu-item index="/my_info" v-if="this.loginState">个人中心</el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "AppHeader",
   data() {
     return {
       activeIndex: "1",
-      isLogin: true, // 之后要改为判断是否登录
     };
   },
   methods: {
@@ -33,6 +34,9 @@ export default {
       this.activeIndex = key; // 更新当前激活的菜单项
       this.$router.push(key, { replace: true }); // 使用Vue Router进行路由导航
     },
+  },
+  computed: {
+    ...mapState("user", ["loginState"]),
   },
 };
 </script>

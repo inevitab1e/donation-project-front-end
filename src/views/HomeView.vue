@@ -10,12 +10,19 @@
 <script>
 import HomeProjectList from "../components/home/HomeProjectList";
 import HomeChildList from "../components/home/HomeChildList";
+// import { mapState,mapActions } from "vuex";
 
 export default {
   name: "HomeView",
   components: {
     HomeProjectList,
     HomeChildList,
+  },
+  created() {
+    // console.log(this.user);
+  },
+  computed: {
+    // ...mapState(["user"]),
   },
 };
 </script>
@@ -35,6 +42,4 @@ export default {
   content: " "; /* 添加内容以占用高度 */
   display: block;
 }
-
-
 </style>

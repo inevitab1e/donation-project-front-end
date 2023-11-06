@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <!-- 图片 -->
-          <a href="https://www.baidu.com/" target="_blank">
+          <a>
             <img
               class="image"
               src="../../assets/logo.png"
@@ -18,39 +18,37 @@
           <!-- 文本说明 -->
           <div class="card-text">
             <h3>
-              <a href="https://www.baidu.com/" target="_blank" class="titless"
-                >test project 01</a
-              >
+              <a class="titless" style="font-size: large">test project 01</a>
             </h3>
             <p>
               <span class="pro_sp2"
                 >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
+              ><span class="info">description</span>
             </p>
             <p>
               <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
+                >计划金额 <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">money</span><b>元</b>
             </p>
             <p>
               <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
+                >起止时间 <el-divider direction="vertical"></el-divider> </span
+              ><span class="info">起始-终止</span>
             </p>
-            <p>
+            <!-- <p>
               <span class="pro_sp2"
                 >项目简介 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">text</span>
-            </p>
+            </p> -->
           </div>
         </el-col>
         <el-col :span="6">
           <!-- 文本说明 -->
           <div class="card-text">
-            <p>
+            <!-- <p>
               <span class="pro_sp2">项目状态：</span>
               <span class="info">text</span>
-            </p>
+            </p> -->
             <p>
               <span class="pro_sp2">已筹：</span>
               <span class="info">666</span><b>元</b>
@@ -63,7 +61,11 @@
               <el-progress :percentage="50"></el-progress>
             </p>
             <br />
-            <el-button type="primary" size="mini" class="donation-btn"
+            <el-button
+              type="primary"
+              size="mini"
+              class="donation-btn"
+              @click="checkLoginState"
               >我要捐款</el-button
             >
           </div>
@@ -74,7 +76,21 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  methods: {
+    checkLoginState() {
+      if (!this.loginState) {
+        this.$router.push("/login");
+      }
+      //写跳转到详情的逻辑
+      console.log(this.loginState);
+    },
+  },
+  computed: {
+    ...mapState("user", ["loginState"]),
+  },
+};
 </script>
 
 <style scoped>
