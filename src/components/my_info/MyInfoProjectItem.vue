@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <!-- 图片 -->
-          <a style="font-size: large;">
+          <a style="font-size: large">
             <img
               class="image"
               src="../../assets/logo.png"
@@ -35,15 +35,12 @@
                 >起止时间 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">起始-终止</span>
             </p>
-            <!-- <p>
-              <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
-            </p> -->
           </div>
         </el-col>
         <el-col :span="2">
-          <el-button type="primary" class="btn">查看详情</el-button>
+          <el-button type="primary" class="btn" @click="handleClick"
+            >查看详情</el-button
+          >
         </el-col>
       </el-row>
     </div>
@@ -51,7 +48,22 @@
 </template>
     
 <script>
-export default {};
+import {mapMutations} from 'vuex'
+export default {
+  props:{
+    userProject: Object
+  },
+  methods: {
+    ...mapMutations('project',['updateCurrentProject']),
+    handleClick() {
+      this.updateCurrentProject(this.userProject)
+      this.$router.push('/project_detail')
+    }
+  },
+  computed:{
+    
+  }
+};
 </script>
     
 <style scoped>
@@ -60,7 +72,7 @@ img {
   margin-left: 10px;
 }
 
-.btn{
+.btn {
   margin-top: 20px;
 }
 

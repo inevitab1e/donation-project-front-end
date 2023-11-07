@@ -10,8 +10,8 @@
         :rules="loginRules"
         label-width="80px"
       >
-        <el-form-item label="账号" prop="account">
-          <el-input v-model="loginForm.account"></el-input>
+        <el-form-item label="账号" prop="id">
+          <el-input v-model="loginForm.id"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model="loginForm.password"></el-input>
@@ -31,11 +31,11 @@ export default {
   data() {
     return {
       loginForm: {
-        account: "",
+        id: "",
         password: "",
       },
       loginRules: {
-        account: [{ required: true, message: "请输入账号", trigger: "blur" }],
+        id: [{ required: true, message: "请输入账号", trigger: "blur" }],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
     };
@@ -47,11 +47,8 @@ export default {
         try {
           if (valid) {
             // 在这里添加登录逻辑
-            this.getUserInfo({
-              account: this.loginForm.account,
-              password: this.loginForm.password,
-            });
-            // console.log(this.loginForm.account, this.loginForm.password);
+            this.getUserInfo({id: this.loginForm.id, password: this.loginForm.password});
+            console.log(this.loginForm.id, this.loginForm.password);
             // 示例：验证用户名和密码，然后跳转到主页
             if (this.loginState) {
               this.$message.success("登录成功");

@@ -18,10 +18,19 @@
   
   <script>
 import HomeShowItem from "./HomeShowItem";
+import { mapState } from "vuex";
 
 export default {
+  data() {
+    return{
+      itemList: this.childList.slice(0,4)
+    }
+  },
   components: {
     HomeShowItem,
+  },
+  computed: {
+    ...mapState("child", ["childList"]),
   },
 };
 </script>
@@ -34,7 +43,7 @@ export default {
 .main_h2 {
   text-align: left;
 }
-.list{
+.list {
   margin: 0;
   padding: 0;
   list-style-type: none;

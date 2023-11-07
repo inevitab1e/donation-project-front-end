@@ -35,20 +35,11 @@
                 >起止时间 <el-divider direction="vertical"></el-divider> </span
               ><span class="info">起始-终止</span>
             </p>
-            <!-- <p>
-              <span class="pro_sp2"
-                >项目简介 <el-divider direction="vertical"></el-divider> </span
-              ><span class="info">text</span>
-            </p> -->
           </div>
         </el-col>
         <el-col :span="6">
           <!-- 文本说明 -->
           <div class="card-text">
-            <!-- <p>
-              <span class="pro_sp2">项目状态：</span>
-              <span class="info">text</span>
-            </p> -->
             <p>
               <span class="pro_sp2">已筹：</span>
               <span class="info">666</span><b>元</b>
@@ -65,7 +56,7 @@
               type="primary"
               size="mini"
               class="donation-btn"
-              @click="checkLoginState"
+              @click="handleClick"
               >我要捐款</el-button
             >
           </div>
@@ -76,19 +67,26 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState,mapMutations } from "vuex";
 export default {
+  // props:{
+  //   project:Object
+  // },
   methods: {
-    checkLoginState() {
+    ...mapMutations('project',['updateCurrentProject']),
+    handleClick() {
       if (!this.loginState) {
         this.$router.push("/login");
       }
       //写跳转到详情的逻辑
+      // this.updateCurrentProject(this.project);
+      this.$router.push("/project_detail")
       console.log(this.loginState);
     },
   },
   computed: {
     ...mapState("user", ["loginState"]),
+    
   },
 };
 </script>

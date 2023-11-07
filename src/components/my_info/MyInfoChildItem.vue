@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <!-- 图片 -->
-          <a style="font-size: large;">
+          <a style="font-size: large">
             <img
               class="image"
               src="../../assets/logo.png"
@@ -27,7 +27,8 @@
             </p>
             <p>
               <span class="pro_sp2"
-                >&nbsp;&nbsp;&nbsp;&nbsp;年龄&nbsp;&nbsp;&nbsp; <el-divider direction="vertical"></el-divider> </span
+                >&nbsp;&nbsp;&nbsp;&nbsp;年龄&nbsp;&nbsp;&nbsp;
+                <el-divider direction="vertical"></el-divider> </span
               ><span class="info">age</span>
             </p>
             <p>
@@ -43,7 +44,7 @@
           </div>
         </el-col>
         <el-col :span="2">
-          <el-button type="primary" class="btn">查看详情</el-button>
+          <el-button type="primary" class="btn" @click="handleClick">查看详情</el-button>
         </el-col>
       </el-row>
     </div>
@@ -51,7 +52,19 @@
 </template>
       
 <script>
-export default {};
+import { mapMutations } from 'vuex';
+export default {
+  props: {
+    userChild: Object,
+  },
+  methods:{
+    ...mapMutations('child',['updateCurrentChild']),
+    handleClick(){
+      // this.updateCurrentChild(this.userChild)
+      this.$router.push('/child_detail')
+    }
+  }
+};
 </script>
       
 <style scoped>

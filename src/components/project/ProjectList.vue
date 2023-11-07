@@ -6,7 +6,7 @@
       <ProjectItem></ProjectItem>
       <ProjectItem></ProjectItem>
       <ProjectItem></ProjectItem>
-      <!-- <ProjectItem v-for="(project) in projectList" :key="project.id" :project="project"></ProjectItem> -->
+      <!-- <ProjectItem v-for="project in this.projectList" :key="project.id" :project="project"></ProjectItem> -->
     </ul>
     <br>
     <!-- 之后要写js -->
@@ -16,10 +16,14 @@
 
 <script>
 import ProjectItem from "./ProjectItem.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
     ProjectItem,
+  },
+  computed: {
+    ...mapState("project",["projectList"]),
   },
 };
 </script>

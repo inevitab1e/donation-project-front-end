@@ -6,6 +6,7 @@
       <ChildItem></ChildItem>
       <ChildItem></ChildItem>
       <ChildItem></ChildItem>
+      <!-- <ChildItem v-for="child in this.childList" :key="child.id" :child="child"></ChildItem> -->
     </ul>
     <br>
     <!-- 之后要写js -->
@@ -15,11 +16,15 @@
   
   <script>
 import ChildItem from "./ChildItem.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
     ChildItem,
   },
+  computed: {
+    ...mapState('child',["childList"]),
+  }
 };
 </script>
   

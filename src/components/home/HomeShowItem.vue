@@ -17,7 +17,7 @@
             type="primary"
             size="mini"
             class="button"
-            @click="checkLoginState"
+            @click="handleClick"
             >我要捐款</el-button
           >
           <!-- <a>我要捐款</a> -->
@@ -37,21 +37,27 @@ export default {
   //   item: Object,
   // },
   methods: {
-    checkLoginState() {
+    ...mapMutations("project", ["updateCurrentProject"]),
+    ...mapMutations("child", ["updateCurrentChild"]),
+    handleClick() {
       if (!this.loginState) {
         this.$router.push("/login");
       }
       //写跳转到详情的逻辑
-      console.log(this.loginState);
-      // this.updateCurrentPorject(this.item);
-      console.log(this.currentProject)
-      // this.$router.push("/project_detail");
+      // if ('age' in item){
+      //   updateCurrentChild(item)
+      //   // this.$router.push("/child_detail");
+      // }else{
+      //   updateCurrentProject(item)
+      //   // this.$router.push("/project_detail");
+      // }
     },
   },
   computed: {
     ...mapState("user", ["loginState"]),
     ...mapState("project", ["currentProject"]),
-    ...mapMutations("project", ["updateCurrentProject"]),
+    ...mapState("child", ["currentChild"]),
+    
   },
 };
 </script>

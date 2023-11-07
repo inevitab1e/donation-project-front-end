@@ -6,6 +6,7 @@
       <ProjectProgItem></ProjectProgItem>
       <ProjectProgItem></ProjectProgItem>
       <ProjectProgItem></ProjectProgItem>
+      <!-- <ProjectProgItem v-for="item in projectProgItemList" :key="item.id" :item="item"></ProjectProgItem> -->
     </ul>
     <br />
     <!-- 之后要写js -->
@@ -19,10 +20,32 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ProjectProgItem from "./ProjectProgItem";
 export default {
+  data() {
+    return {
+      projectProgList: [],
+    };
+  },
   components: {
     ProjectProgItem,
+  },
+  created: {
+    initProjectProgList() {
+      this.projectProgList = this.getProjectProgList();
+    },
+  },
+  methods: {
+    async getProjectProgList() {
+      const res = await this.$axios.get("/projectItem/query-project", {
+        params: { projectId: this.currentProject.projectId },
+      });
+      this.projectProgList = res.data.data;
+    },
+  },
+  computed: {
+    ...mapState("project", ["currentProject"]),
   },
 };
 </script>

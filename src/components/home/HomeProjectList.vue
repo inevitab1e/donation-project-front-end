@@ -19,24 +19,33 @@
 
 <script>
 import HomeShowItem from "./HomeShowItem";
+import {mapState} from 'vuex'
 
 export default {
+  data() {
+    return {
+      itemList : this.projectList.slice(0, 4)
+    };
+  },
   components: {
     HomeShowItem,
+  },
+  computed: {
+    ...mapState("project", ["projectList"]),
   },
 };
 </script>
 
 <style scoped>
-.home-list{
-    height: 400px;
-    margin-bottom: 20px;
+.home-list {
+  height: 400px;
+  margin-bottom: 20px;
 }
-.main_h2{
+.main_h2 {
   text-align: left;
 }
 
-.list{
+.list {
   margin: 0;
   padding: 0;
   list-style-type: none;

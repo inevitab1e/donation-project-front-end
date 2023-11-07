@@ -18,8 +18,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   mounted: {},
+  computed: {
+    ...mapState("project", ["currentProject"]),
+  },
 };
 </script>
 

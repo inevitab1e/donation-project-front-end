@@ -5,10 +5,10 @@
       <h2>注册</h2>
       <el-form ref="form" :model="form" :rules="rules" label-width="100px">
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="form.password"></el-input>
+          <el-input type="password" v-model.trim="form.password"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="confirm">
-          <el-input type="password" v-model="form.confirm"></el-input>
+          <el-input type="password" v-model.trim="form.confirm"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('form')">注册</el-button>
@@ -20,10 +20,9 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   data() {
-    var validateConfirm = (rule, value, callback) => {
+    var validateConfirm = (value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
       } else if (value !== this.form.password) {
@@ -59,8 +58,7 @@ export default {
         try {
           if (valid) {
             // TODO: 发送注册信息到后端 api没写
-            const res = await axios.post("", {
-              username: this.form.username,
+            const res = await this.$axios.post("/donor/signUp", {
               password: this.form.password,
             });
             if (res.data.code === 200) {

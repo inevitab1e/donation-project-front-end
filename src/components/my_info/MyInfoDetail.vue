@@ -13,7 +13,7 @@
           <el-input v-model="editedPhoneNumber"></el-input>
         </el-form-item>
         <el-form-item label="个人简介">
-          <el-input v-model="editedDescription"></el-input>
+          <el-input type="textarea" autosize="true" v-model="editedDescription"></el-input>
         </el-form-item>
         <el-button @click="saveChanges">保存</el-button>
         <el-button @click="removeChanges">取消</el-button>
@@ -28,6 +28,8 @@ export default {
   data() {
     return {
       isEditMode: false,
+      editedPhoneNumber: "",
+      editedDescription: ""
     };
   },
   methods: {

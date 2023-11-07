@@ -10,27 +10,31 @@
       >
       <el-link v-else @click="jumpToLogin">登录</el-link>
       <el-divider direction="vertical"></el-divider>
-      <el-link v-if="this.loginState">退出</el-link>
+      <el-link v-if="this.loginState" @click="logout">退出</el-link>
       <el-link v-else @click="jumpToSignIn">注册</el-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "AppHeader",
   data() {
-    return {
-      
-    };
+    return {};
   },
   methods: {
+    ...mapMutations("user", ["updateUser", "updateLoginState"]),
     jumpToLogin() {
       this.$router.push("/login");
     },
     jumpToSignIn() {
       this.$router.push("/sign_in");
+    },
+    logout() {
+      this.updateLoginState(false);
+      this.updateUser(null);
+      this.$router.push("/", { replace: true });
     },
   },
   computed: {

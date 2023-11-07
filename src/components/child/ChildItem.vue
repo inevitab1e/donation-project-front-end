@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <!-- 图片 -->
-          <a >
+          <a>
             <img
               class="image"
               src="../../assets/logo.png"
@@ -18,7 +18,7 @@
           <!-- 文本说明 -->
           <div class="card-text">
             <h3>
-              <a class="titless" style="font-size: large;"
+              <a class="titless" style="font-size: large"
                 >test child title 01</a
               >
             </h3>
@@ -29,7 +29,8 @@
             </p>
             <p>
               <span class="pro_sp2"
-                >&nbsp;&nbsp;&nbsp;年龄&nbsp;&nbsp;&nbsp; <el-divider direction="vertical"></el-divider> </span
+                >&nbsp;&nbsp;&nbsp;年龄&nbsp;&nbsp;&nbsp;
+                <el-divider direction="vertical"></el-divider> </span
               ><span class="info">age</span>
             </p>
             <p>
@@ -59,7 +60,11 @@
               <el-progress :percentage="50"></el-progress>
             </p>
             <br />
-            <el-button type="primary" size="mini" class="donation-btn"
+            <el-button
+              type="primary"
+              size="mini"
+              class="donation-btn"
+              @click="handleClick"
               >我要捐款</el-button
             >
           </div>
@@ -70,7 +75,27 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapMutations } from "vuex";
+export default {
+  // props: {
+  //   child: Object,
+  // },
+  methods:{
+    ...mapMutations("child", ["updateCurrentChild"]),
+    handleClick(){
+      if (!this.loginState) {
+        this.$router.push("/login");
+      }
+      //写跳转到详情的逻辑
+      // this.updateCurrentChild(this.child);
+      this.$router.push("/child_detail")
+      console.log(this.loginState);
+    }
+  },
+  computed: {
+    ...mapState("user", ["user"]),
+  },
+};
 </script>
 
 <style scoped>

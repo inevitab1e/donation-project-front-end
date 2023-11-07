@@ -100,6 +100,7 @@ const routes = [
   },
   {
     path: '/pay',
+    name: 'pay',
     component: PayView
   }
 

@@ -24,8 +24,33 @@
 </template>
   
   <script>
+import { mapState } from "vuex";
 export default {
-  mounted: {},
+  data() {
+    return {
+      projectProgItemList: [],
+    };
+  },
+  // props: {
+  //   item: Object,
+  // },
+  created: {
+    initChildProgItemList() {
+      this.projectProgItemList = this.getProjectProgItemList();
+    },
+  },
+  methods: {
+    async getProjectProgItemList() {
+      const response = await this.$axios.get(
+        "/projectItem/query",
+        this.currentProject.id
+      );
+      this.childProgItemList = response.data.data;
+    },
+  },
+  computed: {
+    ...mapState("project", ["currentProject"]),
+  },
 };
 </script>
   
@@ -34,7 +59,7 @@ export default {
   text-align: center;
   background-color: #e6e5e5;
 }
-.time{
+.time {
   margin-bottom: 0;
 }
 </style>

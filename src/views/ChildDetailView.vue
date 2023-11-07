@@ -44,9 +44,8 @@
                 </el-col>
                 <el-col :span="7">
                   <el-input
-                    v-model="donationAmount"
+                    v-model.number="donationMoney"
                     placeholder="输入捐款金额"
-                    @input="validateInput"
                   />
                 </el-col>
                 <el-col :span="6">
@@ -75,13 +74,37 @@
 </template>
   
   <script>
+import { mapMutations } from "vuex";
 export default {
+  data() {
+    return {
+      donationMoney: 0,
+    };
+  },
   components: {},
   methods: {
+    ...mapMutations("user", ["updateDonationMoney"]),
     handleSelect(key) {
       // if(key === )
       this.activeIndex = key; // 更新当前激活的菜单项
       this.$router.push(key, { replace: true }); // 使用Vue Router进行路由导航
+    },
+    donate() {
+      // 使用正则表达式验证 donationMoney
+      const regex = /^(?:\d+|\d*\.\d{0,2})$/;
+      if (
+        !regex.test(this.donationMoney) ||
+        parseFloat(this.donationMoney) < 0
+      ) {
+        // 不是数字、格式错误或小于零时，弹出信息框
+        this.$message.error("捐款金额必须为非负数，最多保留两位小数。");
+        return;
+      }
+      // this.donationMoney = null;
+      // 在这里执行捐款操作
+      console.log(this.donationMoney);
+      this.updateDonationMoney(this.donationMoney);
+      this.$router.push({ name: "pay", params: { type: 2 } });
     },
   },
 };
